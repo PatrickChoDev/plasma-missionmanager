@@ -25,7 +25,6 @@ const WindowState = {};
 function moveToNewDesktop(client) {
   WindowState[client.internalId.toString()] = client.desktop;
   workspace.createDesktop(client.desktop, client.caption);
-  notifyDesktopChanged(client.desktop, "add");
   client.desktop += 1;
   workspace.activeClient = client;
 }
@@ -39,29 +38,9 @@ function removeDesktop(client) {
   workspace.currentDesktop = client.desktop;
   workspace.activeClient = client;
   workspace.removeDesktop(remove);
-  notifyDesktopChanged(remove, "remove");
 }
-
-function notifyDesktopChanged(desktop, type) {
-  for (const key in DesktopState) {
-    DesktopState[key] +=
-      type === "add"
-        ? DesktopState[key] >= desktop
-          ? 1
-          : 0
-        : DesktopState[key] <= desktop
-        ? -1
-        : 0;
-  }
-}
-
-function optimizeDesktop() {}
 
 logger.log("Mission Manager Started");
-
-for (const i = 0; i < workspace.desktops; i++) {
-  DesktopState[workspace.desktopName(i)] = i;
-}
 
 workspace.clientAdded.connect((client) => {
   if (client.windowType !== 0) return;
