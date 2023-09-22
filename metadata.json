@@ -10,12 +10,13 @@
         "Name": "Thanapat Chotipun"
       }
     ],
-    "Id": "missionmanager",
+    "Id": "missionManager",
     "Version": "0.1",
     "License": "BSD-3-Clause",
     "Website": "https://github.com/PatrickChoDev/plasma-missionmanager"
   },
   "X-Plasma-API": "javascript",
   "X-Plasma-MainScript": "code/main.js",
+  "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted",
   "KPackageStructure": "KWin/Script"
 }
