@@ -1,35 +1,19 @@
-class Logger {
-  log(msg) {
-    return console.log(`[LOG] MissionManager: ${msg}`);
-  }
-  info(msg) {
-    return console.info(`[INFO] MissionManager: ${msg}`);
-  }
-  warn(msg) {
-    return console.info(`[WARN] MissionManager: ${msg}`);
-  }
-  error(msg) {
-    return console.info(`[ERROR] MissionManager: ${msg}`);
-  }
-  debug(msg) {
-    return console.info(`[DEBUG] MissionManager: ${msg}`);
-  }
-}
+import { Logger } from "./utils/logger";
 
 const logger = new Logger();
 
 const DesktopState = {};
 
-const WindowState = {};
+const WindowState = new Map<string, string>();
 
-function moveToNewDesktop(client) {
-  WindowState[client.internalId.toString()] = client.desktop;
+function moveToNewDesktop(client: KWin.AbstractClient) {
+  WindowState.set(client.internalId.toString(), client.desktop);
   workspace.createDesktop(client.desktop, client.caption);
   client.desktop += 1;
   workspace.activeClient = client;
 }
 
-function removeDesktop(client) {
+function removeDesktop(client: KWin.AbstractClient) {
   const remove = client.desktop - 1;
   if (WindowState[client.internalId.toString()]) {
     client.desktop = WindowState[client.internalId.toString()];
