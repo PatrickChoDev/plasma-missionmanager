@@ -1,17 +1,19 @@
 export class Logger {
-  log(msg: string) {
-    return console.log(`[LOG] MissionManager: ${msg}`);
+  constructor(private readonly module: string) {}
+
+  log(msg: any) {
+    return console.log(`[MissionManager - ${this.module}] LOG : ${msg}`);
   }
-  info(msg: string) {
-    return console.info(`[INFO] MissionManager: ${msg}`);
+  info(msg: any) {
+    return console.info(`MissionManager - [${this.module}] INFO : ${msg}`);
   }
   warn(msg: any) {
-    return console.info(`[WARN] MissionManager: ${msg}`);
+    return console.warn(`MissionManager - [${this.module}] WARN : ${msg}`);
   }
   error(msg: any) {
-    return console.info(`[ERROR] MissionManager: ${msg}`);
+    return console.error(`MissionManager - [${this.module}] ERROR : ${msg}`);
   }
   debug(msg: any) {
-    return console.info(`[DEBUG] MissionManager: ${msg}`);
+    return console.debug(`MissionManager - [${this.module}] DEBUG : ${msg}`);
   }
 }
