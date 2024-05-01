@@ -1,0 +1,20 @@
+{
+  "KPlugin": {
+    "Name": "Mission Manager",
+    "Description": "A Kwin Script configured for Plasms's virtual-desktop manager. To make you Plasma more powerful and productivity.",
+    "Icon": "preferences-system-windows",
+    "Authors": [
+      {
+        "Email": "devpatrick.cho@gmail.com",
+        "Name": "Thanapat Chotipun"
+      }
+    ],
+    "Id": "mission-manager",
+    "Version": "1.0",
+    "License": "BSD-3-Clause",
+    "Website": "https://github.com/PatrickChoDev/plasma-missionmanager"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "KPackageStructure": "KWin/Script"
+}

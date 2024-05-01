@@ -1,12 +1,16 @@
 {
   "name": "mission-manager",
   "displayName": "Mission Manager",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Kwin Script configured for Plasms's virtual-desktop manager. To make you Plasma more powerful and productivity.",
   "author": {
     "email": "devpatrick.cho@gmail.com",
     "name": "Thanapat Chotipun",
-    "url": "https://ptrickchodev.com"
+    "url": "https://patrickchodev.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:PatrickChoDev/plasma-missionmanager.git"
   },
   "license": "BSD-3-Clause",
   "main": "contents/code/main.js",
@@ -21,9 +25,9 @@
     "uninstall": "scripts/uninstall.sh",
     "update-metadata": "scripts/update_metadata.sh"
   },
+  "types": "@types",
   "devDependencies": {
-    "esbuild": "^0.13.15",
-    "kwin-types": "^0.1.1",
-    "typescript": "^4.9.5"
+    "esbuild": "^0.20.2",
+    "typescript": "^5.4.5"
   }
 }

@@ -11,23 +11,35 @@ export class Handler {
 
   clientAddedHandler(client: KWin.AbstractClient) {
     this.logger.info(`ClientAdded: ${client.resourceName}`);
-    this.manager.startManage(client);
+    this.logger.info(
+      `caption :${client.caption}\ndialog: ${client.dialog}\n${client.comboBox}`
+    );
+    if (client.normalWindow) this.manager.startManage(client);
   }
 
   clientActivatedHandler(client: KWin.AbstractClient) {
     this.logger.info(`ClientActivated: ${client.resourceName}`);
 
-    if (!this.manager.isManaged(client))
-      return this.manager.startManage(client);
     if (client.normalWindow) this.manager.checkClient(client);
   }
 
-  clientDesktopAdded() {}
+  clientDesktopAdded() {
+    this.logger.info(`workspaceDesktopAdded: ${workspace.desktops}`);
+    if (workspace.desktops > this.manager.getMaxDesktopUsed()) {
+      this.manager.userDesktopAdded(workspace.desktops);
+    }
+  }
 
   clientMaximizeSet(client: KWin.AbstractClient, h: boolean, v: boolean) {
-    this.logger.info(`ClientActivated: ${client.resourceName}`);
+    this.logger.info(`ClientMaximized: ${client.resourceName}`);
+    if (!client.normalWindow) return;
     if (h && v) return this.manager.moveToNewDesktop(client);
     else if (!h && !v) return this.manager.removeDesktop(client);
-    client.setMaximize(false, false);
+    return client.setMaximize(false, false);
+  }
+
+  clientRemoved(client: KWin.AbstractClient) {
+    this.logger.info(`ClientRemoved: ${client.resourceName}`);
+    this.manager.removeClient(client);
   }
 }

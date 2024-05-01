@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Mission Manager
-Comment=A Kwin Script configured for Plasma's virtual-desktop manager
+Comment=A Kwin Script configured for Plasms's virtual-desktop manager. To make you Plasma more powerful and productivity.
 
 Type=Service
 
@@ -9,8 +9,8 @@ X-Plasma-MainScript=code/main.js
 X-KWin-Border-Activate=false
 X-KDE-PluginInfo-Author=PatrickChoDev
 X-KDE-PluginInfo-Email=devpatrick.cho@gmail.com
-X-KDE-PluginInfo-Name=missionManager
-X-KDE-PluginInfo-Version=1.0.0
+X-KDE-PluginInfo-Name=mission-manager
+X-KDE-PluginInfo-Version=0.0.3
 
 X-KDE-PluginInfo-License=BSD-3-Clause
 X-KDE-ServiceTypes=KWin/Script
